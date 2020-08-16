@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['api']], function () {
+Route::middleware(['api'])->group(function () {
     Route::get('medicines', 'MedicineController@index');
+    Route::get('medicines/{medicine}', 'MedicineController@show');
 });
