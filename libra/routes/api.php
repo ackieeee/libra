@@ -21,3 +21,11 @@ Route::middleware(['api'])->group(function () {
     Route::get('medicines', 'MedicineController@index');
     Route::get('medicines/{medicine}', 'MedicineController@show');
 });
+
+Route::group(["middleware" => "guest:api"], function () {
+    Route::post("/login", "ApiController@login");
+});
+
+Route::group(["middleware" => "auth:api"], function () {
+    Route::get("/me", "ApiController@me");
+});
