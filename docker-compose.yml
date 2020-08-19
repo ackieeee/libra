@@ -21,5 +21,13 @@ services:
       MYSQL_ROOT_PASSWORD: libraroot
     volumes:
       - mysql-data:/var/lib/mysql
+  fe:
+    build: ./docker/fe
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./fe:/src
+
 volumes:
   mysql-data:
