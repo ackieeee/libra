@@ -29,3 +29,9 @@ Route::group(["middleware" => "guest:api"], function () {
 Route::group(["middleware" => "auth:api"], function () {
     Route::get("/me", "ApiController@me");
 });
+
+Route::get('/testCache', function () {
+    Cache::put('name', 'aaa', 100);
+
+    return Cache::get('name');
+});

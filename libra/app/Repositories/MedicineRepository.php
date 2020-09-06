@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Medicine;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Redis;
 
 class MedicineRepository implements MedicineRepositoryInterface
 {
@@ -27,6 +28,10 @@ class MedicineRepository implements MedicineRepositoryInterface
   public function Find(int $id): Medicine
   {
     $medicine = Medicine::find($id);
+    $redis = Redis::connection();
+    dump($redis);
+    // Redis::set("medicine-{$id}", $medicine->name);
+    // Redis::expire("edicine-{$id}", 1800);
     return $medicine;
   }
 }
