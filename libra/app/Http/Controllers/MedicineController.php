@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class MedicineController extends Controller
 {
-    protected $medicines;
+    protected MedicineRepositoryInterface $medicines;
 
     public function __construct(MedicineRepositoryInterface $medicines)
     {
